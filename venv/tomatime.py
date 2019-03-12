@@ -4,9 +4,9 @@ import tkinter as tk
 class Tomatimer(tk.Tk):
     def __init__(self):
         tk.Tk.__init__(self)
-        self.worktime = 2
-        self.short_break_break = 2
-        self.long_break = 2
+        self.worktime = 25*60
+        self.short_break = 5*60
+        self.long_break = 25*50
         self.working = True
         self.completed_num = 0
         self.counter = self.worktime
@@ -36,9 +36,9 @@ class Tomatimer(tk.Tk):
         if self.working:
             self.work.config(text="Work")
         elif self.completed_num >= 4:
-            self.work.config(text="long_break Break")
+            self.work.config(text="long Break")
         else:
-            self.work.config(text="short_break Break")
+            self.work.config(text="short Break")
         check_marks = "checks "
         for i in range(0,self.completed_num):
             check_marks = check_marks + " #"
@@ -69,13 +69,13 @@ class Tomatimer(tk.Tk):
         if self.paused:
             self.button_start.config(text="Resume")
         else:
-            self.configure(background="white")
+            #self.configure(background="white")
             self.button_start.config(text="Pause")
 
     def end_countdown(self):
         self.attributes('-topmost', 1)
         self.attributes('-topmost', 0)
-        self.configure(background="red")
+        #self.configure(background="red")
         if self.working:
             self.completed_num += 1
         elif self.completed_num >= 4:
